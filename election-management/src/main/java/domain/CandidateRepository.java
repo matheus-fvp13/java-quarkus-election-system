@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CandidateRepository {
     void save(List<Candidate> candidates);
@@ -9,4 +10,5 @@ public interface CandidateRepository {
     }
 
     List<Candidate> findAll();
+    Optional<Candidate> findById(String id);
 }
