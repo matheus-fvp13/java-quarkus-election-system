@@ -11,4 +11,9 @@ public class SQLCandidateRepository implements CandidateRepository {
     @Override
     public void save(List<Candidate> candidates) { 
     }
+
+    @Override
+    public List<Candidate> findAll() {
+        return List.of();
+    }
 }

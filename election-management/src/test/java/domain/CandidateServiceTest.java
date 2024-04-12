@@ -2,8 +2,10 @@ package domain;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.when;
 
 import org.instancio.Instancio;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import io.quarkus.test.InjectMock;
@@ -27,5 +29,18 @@ public class CandidateServiceTest {
 
         verify(repository).save(candidate);
         verifyNoMoreInteractions(repository);
-    }    
+    } 
+    
+    @Test 
+    void findAll() {
+        var candidates = Instancio.stream(Candidate.class).limit(10).toList();
+
+        when(repository.findAll()).thenReturn(candidates);
+
+        var result = service.findAll();
+
+        verify(repository).findAll();
+        verifyNoMoreInteractions(repository);
+        assertEquals(result, candidates);
+    }
 }

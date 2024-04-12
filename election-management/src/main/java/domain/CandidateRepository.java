@@ -7,4 +7,6 @@ public interface CandidateRepository {
     default void save(Candidate candidate) {
         save(List.of(candidate));
     }
+
+    List<Candidate> findAll();
 }
